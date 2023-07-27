@@ -53,5 +53,7 @@ def is_open():
     details_results = place_details.get('result')
 
     # Print the result specifying what you only need which is the `opening_hours` field
-
-    return details_results['opening_hours']['open_now']
+    if details_results['business_status'] == 'CLOSED_TEMPORARILY':
+        return False
+    else:
+        return details_results['opening_hours']['open_now']
